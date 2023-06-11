@@ -1,9 +1,22 @@
 <% @links.each do |link| %>
-  <div class="link row clearfix border-bottom pb-2 ">
+  <div class="row clearfix border-bottom pb-2 ">
     <h2>
       <%= link_to link.title, link, class:"link-offset-1 link-underline-secondary link-underline-opacity-0 link-underline-opacity-75-hover " %><br>
       <small class="author">Submitted <%= time_ago_in_words(link.created_at) %> ago by <%= link.user.name %></small>
     </h2>
 
+    <div class="btn-group col-4">
+      <a class="btn btn-light btn-sm" href="<%= link.url %>">Visit Link</a>
+      <%= link_to like_link_path(link), data:{turbo_method: :put}, class: "btn btn-light btn-sm" do %>
+        <span class="glyphicon glyphicon-chevron-up"></span>
+        Upvote
+        <%= link.get_upvotes.size %>
+      <% end %>
+      <%= link_to dislike_link_path(link), data:{turbo_method: :put}, class: "btn btn-light btn-sm" do %>
+        <span class="glyphicon glyphicon-chevron-down">
+        Downvote
+        <%= link.get_downvotes.size %>
+      <% end %>
+    </div>
   </div>
 <% end %>
