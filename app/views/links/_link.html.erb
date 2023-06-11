@@ -1,12 +1,6 @@
 <div id="<%= dom_id link %>">
-  <p>
-    <strong>Title:</strong>
-    <%= link.title %>
-  </p>
-
-  <p>
-    <strong>Url:</strong>
-    <%= link.url %>
-  </p>
-
+  <h1>
+    <%= link_to link.title, link, class:"link-offset-1 link-underline-secondary link-underline-opacity-0 link-underline-opacity-75-hover" %><br>
+    <small class="author">Submitted <%= time_ago_in_words(link.created_at) %> ago by <%= link.user.name %></small>
+  </h1>
 </div>
