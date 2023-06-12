@@ -78,3 +78,5 @@ gem 'bootstrap', '~> 5.3.0.alpha3'
 gem 'jquery-rails'
 
 gem 'acts_as_votable'
+
+gem "simple_form"
